@@ -1,3 +1,7 @@
 # ENVELOP-PROBLEM
-Есть лотерея, которая продаёт конверты с наклейками. В каждом конверте E наклеек. Конверты заполняются наклейками случайным образом. Всего существует L типов наклеек. Лотерея обещает приз тому, кто соберёт полный комплект наклеек, т.е. L разных наклеек. 
-Определить среднее количество конвертов N, которое нужно купить для того, чтобы собрать полный комплект из L наклеек и получить приз.
+Experimental conditions:
+There is a lottery that sells envelopes with stickers. Each envelope contains E stickers. Envelopes are filled with stickers randomly. There are L types of labels in total. The lottery promises a prize to someone who the first collects a complete set of stickers, i.e. L different stickers. 
+
+Taks:
+Determine the average number of envelopes N that you need to buy in order to collect a complete set of L stickers and get a prize.
+
