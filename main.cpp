@@ -22,24 +22,24 @@ unsigned int myHist[SIZEOFHIST]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 						  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                           0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-// Конверт
+// ГЉГ®Г­ГўГҐГ°ГІ
 class Envelope{
 	unsigned short int numberOfLabelsInEnvelope;
 	unsigned short int sizeOfCollection;
 public:
-	vector<int> elabel; // массив наклеек
-	Envelope(const Envelope &En); // Конструктор копирования нужет, т.к. конверт передаётся как параметр функции.
-	Envelope(unsigned short int InNumberOfLabelsInEnvelope, unsigned short int inSizeOfCollection);// Сгенерировать случайный конверт
+	vector<int> elabel; 
+	Envelope(const Envelope &En); 
+	Envelope(unsigned short int InNumberOfLabelsInEnvelope, unsigned short int inSizeOfCollection);// Г‘ГЈГҐГ­ГҐГ°ГЁГ°Г®ГўГ ГІГј Г±Г«ГіГ·Г Г©Г­Г»Г© ГЄГ®Г­ГўГҐГ°ГІ
 	//~Envelope();
-	void fill(); // Заполнить конверт заново
-	void show(); // Показать содкржимое конверта
+	void fill(); // Г‡Г ГЇГ®Г«Г­ГЁГІГј ГЄГ®Г­ГўГҐГ°ГІ Г§Г Г­Г®ГўГ®
+	void show(); // ГЏГ®ГЄГ Г§Г ГІГј Г±Г®Г¤ГЄГ°Г¦ГЁГ¬Г®ГҐ ГЄГ®Г­ГўГҐГ°ГІГ 
 };
 
-// Сгенерировать случайный конверт
+// Г‘ГЈГҐГ­ГҐГ°ГЁГ°Г®ГўГ ГІГј Г±Г«ГіГ·Г Г©Г­Г»Г© ГЄГ®Г­ГўГҐГ°ГІ
 Envelope::Envelope(unsigned short int InNumberOfLabelsInEnvelope, unsigned short int inSizeOfCollection){
 	numberOfLabelsInEnvelope=InNumberOfLabelsInEnvelope;
 	sizeOfCollection=inSizeOfCollection;
-	//cout << "Конверт создан. Он пуст. "<< endl;
+	//cout << "ГЉГ®Г­ГўГҐГ°ГІ Г±Г®Г§Г¤Г Г­. ГЋГ­ ГЇГіГ±ГІ. "<< endl;
 }
 //
 Envelope::Envelope(const Envelope &En){
@@ -49,15 +49,15 @@ Envelope::Envelope(const Envelope &En){
 }
 
 void Envelope::fill(){
-	// Заполнить конверт
+	// Г‡Г ГЇГ®Г«Г­ГЁГІГј ГЄГ®Г­ГўГҐГ°ГІ
 	for(int i=0; i<numberOfLabelsInEnvelope; i++){
 		elabel.push_back( rand()%sizeOfCollection   ); // 0 ... (numberOfLabelsInEnvelope-1)
 	}
-	random_shuffle(elabel.begin(),elabel.end()); // На этом этапе было бы хорошо перемешать элементы массива.
+	random_shuffle(elabel.begin(),elabel.end()); 
 }
 
 void Envelope::show(){
-	cout << "Содержимое конверта: [ ";
+	cout << "Г‘Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ ГЄГ®Г­ГўГҐГ°ГІГ : [ ";
 	for(int i=0; i<elabel.size(); i++){
 		cout << elabel[i];
 		cout << "  ";
@@ -67,29 +67,29 @@ void Envelope::show(){
 
 
 
-// Коллекция
+// ГЉГ®Г«Г«ГҐГЄГ¶ГЁГї
 class Collection{
 public:
 	unsigned short int sizeOfCollection;
 	//unsigned short int sizeOfCollection;
-    vector<int> clabel; // массив нокопленных разных наклеек
+    vector<int> clabel; // Г¬Г Г±Г±ГЁГў Г­Г®ГЄГ®ГЇГ«ГҐГ­Г­Г»Гµ Г°Г Г§Г­Г»Гµ Г­Г ГЄГ«ГҐГҐГЄ
 	Collection(unsigned short int InSizeOfCollection);
 	Collection(const Collection &Coll );
 	//~Collection();
-	void replenishCollection(Envelope Envlp);  // Пополнить коллекцию (supplement)
-	bool thereIsInTheCollection(int labeli); // Определить есть ли в коллекции наклейка с номаром labeli?
+	void replenishCollection(Envelope Envlp);  
+	bool thereIsInTheCollection(int labeli); 
 	void show();
 };
 //
 Collection::Collection(unsigned short int InSizeOfCollection){
 	sizeOfCollection=InSizeOfCollection;
-	//cout << "Коллекция создана."<< endl;
+	//cout << "ГЉГ®Г«Г«ГҐГЄГ¶ГЁГї Г±Г®Г§Г¤Г Г­Г ."<< endl;
 }
 //
 void Collection::replenishCollection(Envelope Envlp){
 	for(int i=0; i<Envlp.elabel.size(); i++){
-		if( !thereIsInTheCollection( Envlp.elabel[i] ) ){ // Если такой наклейки ещё нет в коллекции, то
-			clabel.push_back(Envlp.elabel[i]);  // Добавляем новую наклейку в коллецию
+		if( !thereIsInTheCollection( Envlp.elabel[i] ) ){ 
+			clabel.push_back(Envlp.elabel[i]);  
 		}// if
 	}// for
 }
@@ -109,7 +109,7 @@ bool Collection::thereIsInTheCollection(int labeli){
 }
 
 void Collection::show(){
-	cout << "Содержимое коллекции ( ";
+	cout << "Г‘Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ ГЄГ®Г«Г«ГҐГЄГ¶ГЁГЁ ( ";
 	for(int i=0; i<clabel.size(); i++){
 		cout << clabel[i];
 		cout << " ";
@@ -122,15 +122,15 @@ void Collection::show(){
 unsigned short int carryOutExperiment( Collection &MyColl,  Envelope &Envl  ){
 	unsigned short int n=0;
 	//MyColl.show();
-	while(MyColl.clabel.size() < MyColl.sizeOfCollection ){ // Пока полный комплект не собран
+	while(MyColl.clabel.size() < MyColl.sizeOfCollection ){ 
 		n++;
-		Envl.fill(); // Купить новый нокверт
-		//Envl.show(); // Раскрыть конверт. Для отладки
-		MyColl.replenishCollection(Envl);// Выбрать новые наклейки
-		//MyColl.show();    //Для отладки
-		Envl.elabel.clear();// Выбросить остатки
+		Envl.fill(); 
+		//Envl.show(); 
+		MyColl.replenishCollection(Envl);//
+		//MyColl.show();    //
+		Envl.elabel.clear();// 
 	}
-	return n; // Для того, чтобы собрать полный комплект нужно купить n конвертов.
+	return n; // Г„Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» Г±Г®ГЎГ°Г ГІГј ГЇГ®Г«Г­Г»Г© ГЄГ®Г¬ГЇГ«ГҐГЄГІ Г­ГіГ¦Г­Г® ГЄГіГЇГЁГІГј n ГЄГ®Г­ГўГҐГ°ГІГ®Гў.
 }
 
 void findMax(unsigned int* inputArr,int size, unsigned int* maxEl,unsigned int* indexOfmaxEl ){
@@ -150,19 +150,19 @@ void findMax(unsigned int* inputArr,int size, unsigned int* maxEl,unsigned int* 
 }
 
 int main(){
-	setlocale(LC_ALL, "Russian"); // Подключение возможности отображать кириллицу на консоль.
-	srand(time(NULL) ); // Иницмализируем генератор случайных чисел
+	setlocale(LC_ALL, "Russian"); // ГЏГ®Г¤ГЄГ«ГѕГ·ГҐГ­ГЁГҐ ГўГ®Г§Г¬Г®Г¦Г­Г®Г±ГІГЁ Г®ГІГ®ГЎГ°Г Г¦Г ГІГј ГЄГЁГ°ГЁГ«Г«ГЁГ¶Гі Г­Г  ГЄГ®Г­Г±Г®Г«Гј.
+	srand(time(NULL) ); // Г€Г­ГЁГ¶Г¬Г Г«ГЁГ§ГЁГ°ГіГҐГ¬ ГЈГҐГ­ГҐГ°Г ГІГ®Г° Г±Г«ГіГ·Г Г©Г­Г»Гµ Г·ГЁГ±ГҐГ«
 
-	unsigned short int numberOfLabelsInEnvelope=0;  // число наклеек в конверте (0 ... 65 000)
-	unsigned int numberOfExperiments=0; // Число экспериментов (0 ... 65 000)
-	unsigned short int numberOfEnvelopesYouNeedToBuy=0; // Количество конвертов, которые нужно купить для того, чтобы собрать полный комплект.
-	unsigned short int numberOfLabelsInSet=0; // Количество наклеек в комплекте (0....65 000)
+	unsigned short int numberOfLabelsInEnvelope=0;  // Г·ГЁГ±Г«Г® Г­Г ГЄГ«ГҐГҐГЄ Гў ГЄГ®Г­ГўГҐГ°ГІГҐ (0 ... 65 000)
+	unsigned int numberOfExperiments=0; // Г—ГЁГ±Г«Г® ГЅГЄГ±ГЇГҐГ°ГЁГ¬ГҐГ­ГІГ®Гў (0 ... 65 000)
+	unsigned short int numberOfEnvelopesYouNeedToBuy=0; // ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЄГ®Г­ГўГҐГ°ГІГ®Гў, ГЄГ®ГІГ®Г°Г»ГҐ Г­ГіГ¦Г­Г® ГЄГіГЇГЁГІГј Г¤Г«Гї ГІГ®ГЈГ®, Г·ГІГ®ГЎГ» Г±Г®ГЎГ°Г ГІГј ГЇГ®Г«Г­Г»Г© ГЄГ®Г¬ГЇГ«ГҐГЄГІ.
+	unsigned short int numberOfLabelsInSet=0; // ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г­Г ГЄГ«ГҐГҐГЄ Гў ГЄГ®Г¬ГЇГ«ГҐГЄГІГҐ (0....65 000)
 
 
-	//cout << "Введите число наклеек в конверте  (E): "; cin >> numberOfLabelsInEnvelope; cout << endl;
-	//cout << "Введите число наклеек в комплекте (L): "; cin >> numberOfLabelsInSet;     cout << endl;
+	//cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г·ГЁГ±Г«Г® Г­Г ГЄГ«ГҐГҐГЄ Гў ГЄГ®Г­ГўГҐГ°ГІГҐ  (E): "; cin >> numberOfLabelsInEnvelope; cout << endl;
+	//cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г·ГЁГ±Г«Г® Г­Г ГЄГ«ГҐГҐГЄ Гў ГЄГ®Г¬ГЇГ«ГҐГЄГІГҐ (L): "; cin >> numberOfLabelsInSet;     cout << endl;
 
-	//cout << "Введите число экспериментов (N): "; cin >> numberOfExperiments; cout << endl;
+	//cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г·ГЁГ±Г«Г® ГЅГЄГ±ГЇГҐГ°ГЁГ¬ГҐГ­ГІГ®Гў (N): "; cin >> numberOfExperiments; cout << endl;
 	numberOfExperiments=3000;
 
 
@@ -198,14 +198,14 @@ for(numberOfLabelsInEnvelope=8; numberOfLabelsInEnvelope<=12; numberOfLabelsInEn
 	    //printf("\nthe percentage of execution:\n" );
 
 	    for(int i=0; i<numberOfExperiments; i++){
-		    numberOfEnvelopesYouNeedToBuy = carryOutExperiment( MyColl, Envl);// Провести эксперимент
-		    file << numberOfEnvelopesYouNeedToBuy << " "; // Занести результаты в файл
-		    //cout<< endl <<"Надо купить " <<numberOfEnvelopesYouNeedToBuy <<" конвертов"<< " ";
+		    numberOfEnvelopesYouNeedToBuy = carryOutExperiment( MyColl, Envl);// ГЏГ°Г®ГўГҐГ±ГІГЁ ГЅГЄГ±ГЇГҐГ°ГЁГ¬ГҐГ­ГІ
+		    file << numberOfEnvelopesYouNeedToBuy << " "; // Г‡Г Г­ГҐГ±ГІГЁ Г°ГҐГ§ГіГ«ГјГІГ ГІГ» Гў ГґГ Г©Г«
+		    //cout<< endl <<"ГЌГ Г¤Г® ГЄГіГЇГЁГІГј " <<numberOfEnvelopesYouNeedToBuy <<" ГЄГ®Г­ГўГҐГ°ГІГ®Гў"<< " ";
 
 		    // build histogramm here
 		    myHist[numberOfEnvelopesYouNeedToBuy]++;
 
-		    MyColl.clabel.clear();  // Отчистить коллекцию
+		    MyColl.clabel.clear();  // ГЋГІГ·ГЁГ±ГІГЁГІГј ГЄГ®Г«Г«ГҐГЄГ¶ГЁГѕ
 
 		    if(i%50){
 		        percentageOfExecution = (i*100/numberOfExperiments);
