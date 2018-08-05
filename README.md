@@ -8,6 +8,6 @@ Taks:
 Determine the average number of envelopes N that you need to buy in order to collect a complete set of L stickers and get a prize.
 
 
-Result of execution presented in the file outcom.txt
+Result of execution is presented in the file outcom.txt
 
 
