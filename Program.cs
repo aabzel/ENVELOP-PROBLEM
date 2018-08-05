@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,28 +10,28 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            //Envelope envrlop = new Envelope(5, 5);
-            int numberOfLabelsInSet = 5;
-            int numberOfLabelsInEnvelope = 5;
-            int numberOfExperiments = 100;
+            int numberOfExperiments = 1000;
             int sizeOfHist = 100;
 
-            Console.WriteLine("numberOfLabelsInSet: " + numberOfLabelsInSet);
-            Console.WriteLine("numberOfLabelsInEnvelope: " + numberOfLabelsInEnvelope);
             Console.WriteLine("numberOfExperiments: " + numberOfExperiments);
 
-            Lottery Lott = new Lottery(numberOfLabelsInSet, 
-                                       numberOfLabelsInEnvelope, 
-                                       sizeOfHist);
-
-            for(int i=0; i<numberOfExperiments; i++)
+            for (int numberOfLabelsInSet = 1; numberOfLabelsInSet < 20; numberOfLabelsInSet++)
             {
-                Lott.carry_out_experiment();
-	        }
+                for (int numberOfLabelsInEnvelope = 1; numberOfLabelsInEnvelope < 20; numberOfLabelsInEnvelope++)
+                {
+                    Console.WriteLine("numberOfLabelsInSet: " + numberOfLabelsInSet);
+                    Console.WriteLine("numberOfLabelsInEnvelope: " + numberOfLabelsInEnvelope);
+                    Lottery Lott = new Lottery(numberOfLabelsInSet,
+                           numberOfLabelsInEnvelope,
+                           sizeOfHist);
 
-            Lott.print_bar_chart();
+                    Lott.carry_out_experiments(numberOfExperiments);
 
+                    Lott.print_bar_chart();
 
+                }
+            }
+            //generate html table
         }
     }
 }
